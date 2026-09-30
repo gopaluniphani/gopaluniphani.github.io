@@ -143,27 +143,27 @@ export const caseStudies: CaseStudy[] = [
 export const capabilityGroups: CapabilityGroup[] = [
   {
     number: "A",
-    title: "Product interfaces",
-    thesis: "Interfaces that keep complex workflows legible and responsive.",
-    technologies: ["TypeScript", "JavaScript", "React", "Next.js", "Redux Toolkit", "Accessible UI"],
+    title: "Responsive product interfaces",
+    thesis: "I turn data-heavy workflows into responsive React interfaces with deliberate state, pagination, and progressive loading.",
+    technologies: ["React", "TypeScript", "Redux Toolkit", "JavaScript", "Next.js"],
   },
   {
     number: "B",
-    title: "Service foundations",
-    thesis: "Secure, explicit service boundaries built for change.",
-    technologies: ["Java", "Spring Boot", "Python", "FastAPI", "Express.js", "REST", "AuthN / AuthZ"],
+    title: "Secure backend services",
+    thesis: "I build APIs and account flows across Java and Python services—from authentication and access rules to model-serving endpoints.",
+    technologies: ["Spring Boot", "Python", "FastAPI", "Java", "Express", "REST APIs"],
   },
   {
     number: "C",
-    title: "Data and intelligence",
-    thesis: "Data systems that connect models to dependable product behavior.",
-    technologies: ["SQL", "BigQuery", "PostgreSQL", "MongoDB", "Kafka", "TensorFlow", "PyTorch", "scikit-learn"],
+    title: "Data & production ML",
+    thesis: "I connect SQL features and ranking models to product workflows, and operate the services that deliver model predictions.",
+    technologies: ["PostgreSQL", "Kafka", "BigQuery", "SQL", "Ray Serve", "XGBoost", "MongoDB"],
   },
   {
     number: "D",
-    title: "Delivery and operations",
-    thesis: "Delivery systems designed around reliability, visibility, and recovery.",
-    technologies: ["Docker", "Kubernetes", "Cloud Foundry", "GitHub Actions", "CI/CD", "NGINX", "Operational tooling"],
+    title: "Delivery & platform engineering",
+    thesis: "I work across deployment, runtime configuration, monitoring, and release readiness to keep software maintainable in production.",
+    technologies: ["Docker", "GitHub Actions", "Kubernetes", "CI/CD", "Cloud Foundry", "NGINX"],
   },
 ];
 

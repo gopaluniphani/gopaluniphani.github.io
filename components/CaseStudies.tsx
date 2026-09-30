@@ -114,10 +114,49 @@ function CaseStudy({ study, active, onSelect }: {
 }
 
 export function CaseStudies() {
+  const work = useRef<HTMLElement>(null);
   const [active, setActive] = useState<string | null>(null);
   const stopAnchoring = useRef<(() => void) | null>(null);
 
   useEffect(() => () => stopAnchoring.current?.(), []);
+
+  useEffect(() => {
+    const section = work.current;
+    const scroller = section?.closest<HTMLElement>("[data-scroll-wrapper]");
+    const artwork = section?.querySelector<HTMLElement>("[data-work-art]");
+    if (!section || !scroller || !artwork) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const viewport = scroller.getBoundingClientRect();
+      const anchor = document.querySelector<HTMLElement>('[data-section-anchor="work"]');
+      if (!anchor) return;
+      const nextAnchor = document.querySelector<HTMLElement>('[data-section-anchor="range"]');
+      if (!nextAnchor) return;
+      const start = anchor.getBoundingClientRect().top;
+      const distance = Math.max(1, nextAnchor.getBoundingClientRect().top - start);
+      // Complete a full turn between Work's navigation target and Technical Range.
+      const progress = Math.max(0, Math.min(1, (viewport.top - start) / distance));
+      // A single 2D transform; CSS owns positioning, independently of disclosure height.
+      if (!section.hasAttribute("data-reading") || reducedMotion.matches) {
+        const turn = reducedMotion.matches ? 0 : progress * 360;
+        artwork.style.setProperty("--art-turn", `${turn.toFixed(2)}deg`);
+      }
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const resize = new ResizeObserver(schedule);
+    resize.observe(scroller);
+    scroller.addEventListener("scroll", schedule, { passive: true });
+    reducedMotion.addEventListener("change", schedule);
+    update();
+    return () => {
+      cancelAnimationFrame(frame);
+      resize.disconnect();
+      scroller.removeEventListener("scroll", schedule);
+      reducedMotion.removeEventListener("change", schedule);
+    };
+  }, []);
 
   const selectCase = useCallback((number: string | null) => {
     stopAnchoring.current?.();
@@ -163,16 +202,19 @@ export function CaseStudies() {
   }, []);
 
   return (
-    <section className={`work section ${styles.work}`} id="work" aria-labelledby="work-title">
-      <div className="shell">
+    <section className={`work section ${styles.work}`} id="work" aria-labelledby="work-title" ref={work} data-reading={active !== null ? "" : undefined}>
+      <div className={styles.artRail} aria-hidden="true">
+        <div className={styles.art} data-work-art>
+        <Image src="/images/work-assembly.webp" alt="" width={379} height={600} sizes="(max-width: 768px) 80vw, 42vw" />
+        </div>
+      </div>
+      <div className={`shell ${styles.foreground}`}>
         <header className={styles.header}>
           <p className={`eyebrow ${styles.eyebrow}`}>02 / Selected work</p>
           <div className={styles.intro}>
             <h2 id="work-title">Engineering<br /><em>in practice.</em></h2>
             <p className={styles.description}>Selected projects across responsive interfaces, secure products, and production ML. What I built, the decisions I made, and where the work landed.</p>
-            <div className={styles.art} data-reveal aria-hidden="true">
-              <Image src="/images/work-assembly.webp" alt="" width={480} height={600} sizes="(max-width: 480px) 112px, (max-width: 768px) 180px, 360px" />
-            </div>
+
           </div>
         </header>
         <div className={styles.listHeading}>
