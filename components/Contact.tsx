@@ -1,31 +1,37 @@
+import { ArrowUpRight, EnvelopeSimple, GithubLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/content/portfolio";
+import styles from "./Contact.module.css";
 
 export function Contact() {
   return (
-    <footer className="contact" id="contact">
-      <div className="shell contact__inner">
-        <p className="eyebrow">05 / What’s next</p>
-        <div className="contact__layout" data-reveal>
-          <div>
-            <h2>Let’s build work that matters—and holds up.</h2>
-            <p className="contact__intro">
-              I’m interested in high-impact engineering work with strong product and technology organizations, especially where software quality, systems thinking, and AI-enabled delivery meet.
-            </p>
-          </div>
-          <div className="contact__actions">
-            <a className="button button--light" href={`mailto:${profile.email}`}>Email me <span aria-hidden="true">↗</span></a>
-            <a className="contact__link" href={profile.linkedin} target="_blank" rel="noreferrer">
-              <span>LinkedIn</span><span aria-hidden="true">↗</span>
+    <footer className={`shell ${styles.contact}`} id="contact" aria-labelledby="contact-title">
+      <p className="eyebrow">05 / What’s next</p>
+      <div className={styles.layout} data-reveal>
+        <div className={styles.copy}>
+          <h2 id="contact-title">Let’s build<br /><em>what’s next.</em></h2>
+          <p className={styles.intro}>I’m looking for a full-time software engineering role where I can build useful products and dependable systems.</p>
+          <p className={styles.focus}>Full-stack · Backend · Platform engineering</p>
+        </div>
+        <div className={styles.actions}>
+          <p className={styles.invitation}>Have a role or team in mind? Let’s talk.</p>
+          <a className={styles.email} href={`mailto:${profile.email}`}>
+            <EnvelopeSimple size={24} aria-hidden="true" />
+            <span><strong>Email me</strong><span>{profile.email}</span></span>
+            <ArrowUpRight className={styles.arrow} size={22} aria-hidden="true" />
+          </a>
+          <div className={styles.links}>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">
+              <LinkedinLogo size={20} aria-hidden="true" /><span>LinkedIn</span><ArrowUpRight className={styles.arrow} size={17} aria-hidden="true" />
             </a>
-            <div className="contact__link contact__link--pending" aria-label="GitHub link pending">
-              <span>GitHub</span><span>Link pending</span>
-            </div>
+            <a href="https://github.com/gopaluniphani/gopaluniphani.github.io" target="_blank" rel="noreferrer">
+              <GithubLogo size={20} aria-hidden="true" /><span>Portfolio source</span><ArrowUpRight className={styles.arrow} size={17} aria-hidden="true" />
+            </a>
           </div>
         </div>
-        <div className="contact__footer">
-          <p>© {new Date().getFullYear()} {profile.name}</p>
-          <p>{profile.location} · Built with Next.js</p>
-        </div>
+      </div>
+      <div className={styles.footer}>
+        <p>© {new Date().getFullYear()} {profile.name}</p>
+        <p>{profile.location}</p>
       </div>
     </footer>
   );

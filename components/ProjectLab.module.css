@@ -1,0 +1,20 @@
+.lab { font-family: var(--font-hero-sans), Arial, sans-serif; padding-bottom: clamp(4rem, 7vw, 6rem); }
+.header { padding-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.intro { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: end; gap: 2rem; margin-top: 1.5rem; }
+.intro h2 { font-size: clamp(2.65rem, 5.4vw, 5rem); line-height: 1.04; letter-spacing: -0.055em; font-weight: 560; }
+.intro h2 em { color: var(--accent); font-family: var(--font-hero-serif), Georgia, serif; font-weight: 400; letter-spacing: -0.035em; }
+.intro > p { max-width: 32rem; color: var(--ink-soft); font-size: 1rem; line-height: 1.7; }
+.chapters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
+.chapter { min-width: 0; display: flex; flex-direction: column; padding: clamp(1.25rem, 2.5vw, 2rem); border: 1px solid var(--line); border-radius: 0.5rem; background: var(--paper-raised); }
+.chapterTop { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem; }
+.icon { display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; border: 1px solid var(--line); border-radius: 50%; color: var(--accent); background: var(--paper); }
+.icon svg { transition: transform 220ms ease; }
+.label { font-family: var(--font-code); font-size: 0.65rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-faint); }
+.chapter h3 { font-size: clamp(1.15rem, 1.8vw, 1.5rem); line-height: 1.25; font-weight: 560; letter-spacing: -0.035em; }
+.story { margin: 0.9rem 0 1.5rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.7; }
+.lesson { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 0.8rem; line-height: 1.5; color: var(--accent); }
+@media (hover: hover) { .chapter:hover .icon svg { transform: rotate(-8deg); } }
+@media (max-width: 60rem) { .chapters { grid-template-columns: 1fr; } .chapterTop { margin-bottom: 0.85rem; } .story { margin-bottom: 1rem; max-width: 65ch; } }
+@media (max-width: 48rem) { .intro { grid-template-columns: 1fr; gap: 1rem; } .intro > p { max-width: 42rem; } }
+@media (max-width: 36rem) { .intro h2 { font-size: clamp(2.25rem, 9vw, 3.1rem); } .chapter { padding: 1.2rem; } }
+@media (prefers-reduced-motion: reduce) { .icon svg { transition: none; } .chapter:hover .icon svg { transform: none; } }
