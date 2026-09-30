@@ -84,73 +84,59 @@ export const timeline: TimelineEntry[] = [
 export const caseStudies: CaseStudy[] = [
   {
     number: "01",
-    title: "Modernizing how software moves",
-    theme: "Enterprise platform modernization",
+    title: "Loading the data users need first",
+    theme: "Operational diagnostics · Frontend performance",
     context:
-      "A mature multi-environment application needed to move toward a more portable, maintainable delivery model without disrupting established operational controls.",
+      "A diagnostics page waited for a large set of live results before becoming useful. Support users needed to start investigating without loading every detail up front.",
     role:
-      "Worked across frontend, backend, and delivery concerns to investigate constraints, compare options, and guide an implementation path through review.",
+      "I redesigned the React interface's state and loading behavior using Redux Toolkit, pagination, and reuse of previously viewed results.",
     approach:
-      "Separated environment concerns from the application build, clarified system boundaries, and aligned the design with pipeline, runtime, and support needs.",
-    capabilities: ["Architecture tradeoffs", "CI/CD", "React", "Spring Boot", "Runtime configuration"],
+      "I separated the initial list from detailed results and loaded diagnostics for the visible page. Previously viewed pages stayed available, with an explicit refresh action so users could choose when to request fresh data.",
+    capabilities: ["React", "Redux Toolkit", "Progressive loading", "Pagination", "State management"],
     outcome:
-      "Created a workable modernization path while preserving the controls expected in a reliability-sensitive enterprise environment.",
+      "Users could begin reviewing the selected page without waiting for the entire dataset. I applied the same loading approach across the diagnostic views, making investigation and return visits more responsive.",
   },
   {
     number: "02",
-    title: "Turning operational wait into flow",
-    theme: "Operational tools and performance",
+    title: "Building a secure, guided workflow product",
+    theme: "Product development · Full-stack engineering",
     context:
-      "A data-heavy diagnostics experience made time-sensitive investigation slower and harder than it needed to be.",
+      "A guided learning product needed structured, branching conversations alongside secure accounts and a custom web interface.",
     role:
-      "Traced the experience across UI state, API behavior, data access, and the way operators moved through the workflow.",
+      "I built features across React, Express, PostgreSQL, and Botpress OSS. I took ownership of authentication and account management, including password reset, sessions, roles, and authenticator-based two-factor authentication.",
     approach:
-      "Introduced deliberate state management, caching, pagination, and more efficient data-loading patterns across the stack.",
-    capabilities: ["Performance analysis", "React", "Redux Toolkit", "API design", "MongoDB"],
+      "I connected the custom interface and backend APIs to conversation flows that followed defined rules and user choices. I implemented the account lifecycle and refined product features in response to user acceptance testing.",
+    capabilities: ["React", "Express", "PostgreSQL", "Botpress OSS", "TOTP / 2FA"],
     outcome:
-      "Transformed a slow operational workflow into a responsive experience that better supported investigation and decision-making.",
+      "The product reached user acceptance testing and was close to release when my involvement ended. My contribution combined the account-management system with features across the guided product experience.",
   },
   {
     number: "03",
-    title: "Security as a delivery property",
-    theme: "Secure backend and API engineering",
+    title: "Taking image models into production",
+    theme: "ML platforms · Backend engineering",
     context:
-      "Platform features and release pipelines required access controls, protected workflows, and remediation practices that could stand up to enterprise review.",
+      "An e-commerce catalog team needed image-quality checks and product attributes in a form its publishing workflow could use.",
     role:
-      "Contributed across authentication, authorization, API behavior, security remediation, testing, and release readiness.",
+      "I owned model-serving and orchestration services, deployment, and ongoing operations. I later expanded into model fine-tuning alongside the data-science team.",
     approach:
-      "Made controls explicit at system boundaries, paired implementation with verification, and treated pipeline feedback as part of product quality.",
-    capabilities: ["AuthN / AuthZ", "Java", "Spring Security", "REST APIs", "Quality gates"],
+      "I built Python services with FastAPI and Ray Serve, coordinated inference, and combined model outputs into usable results. I worked on batching, monitoring, and deployment so the models could be operated as a production system.",
+    capabilities: ["Python", "FastAPI", "Ray Serve", "Kafka", "Docker", "Model serving"],
     outcome:
-      "Strengthened secure delivery while keeping application workflows maintainable for engineers and predictable for users.",
+      "The services supported production catalog image qualification and metadata enrichment. My work extended beyond serving predictions to maintaining the running system and bringing additional model capabilities into it.",
   },
   {
     number: "04",
-    title: "Agents with judgment built in",
-    theme: "AI-assisted engineering workflows",
+    title: "Turning purchase history into recommendations",
+    theme: "Recommendation systems · Applied ML",
     context:
-      "AI coding tools created leverage, but teams needed repeatable workflows that kept architecture, quality, and human judgment visible.",
+      "An e-commerce experience relied on manually curated product suggestions. The team needed recommendations informed by what customers were likely to buy.",
     role:
-      "Designed reusable agentic workflows spanning discovery, design, implementation, testing, documentation, and security review.",
+      "I developed SQL features, trained and compared purchase-likelihood models in BigQuery ML, and implemented filtering and ranking. I collaborated with a team lead on complex queries and validation.",
     approach:
-      "Added design-first sequencing, human checkpoints, reusable guidance, explicit constraints, and verification loops instead of treating generation as the finish line.",
-    capabilities: ["Agent design", "Human-in-the-loop", "Guardrails", "Developer enablement", "Quality controls"],
+      "I evaluated order history and category affinity, used feature importance to remove weaker inputs, and filtered unsuitable candidates before ranking. I delivered the recommendations as a repeatable batch output for the product team.",
+    capabilities: ["SQL", "BigQuery", "BigQuery ML", "XGBoost", "Feature engineering"],
     outcome:
-      "Made AI-assisted delivery more consistent, reviewable, and useful across different engineering tasks and contributors.",
-  },
-  {
-    number: "05",
-    title: "From model notebook to usable system",
-    theme: "Applied ML and data systems",
-    context:
-      "E-commerce and product teams needed analytical models to become dependable inputs for real product and operational decisions.",
-    role:
-      "Worked across feature engineering, model experimentation, APIs, streaming data, serving, and deployment patterns.",
-    approach:
-      "Connected model quality to the surrounding system: data contracts, repeatable pipelines, serving behavior, observability, and stakeholder feedback.",
-    capabilities: ["Python", "BigQuery", "Kafka", "TensorFlow / PyTorch", "Model serving"],
-    outcome:
-      "Helped move ML work beyond isolated experiments toward practical, production-oriented data products.",
+      "The rankings were used in the customer-facing recommendation experience. The project connected model development to a usable product output, with a repeatable delivery process for downstream teams.",
   },
 ];
 

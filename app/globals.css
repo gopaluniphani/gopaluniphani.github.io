@@ -190,6 +190,19 @@ body {
   top: var(--panel-sticky-top);
 }
 
+/* Work changes height as readers open cases. Keep its exit in normal flow
+   so the next chapter cannot cover a case or move with its sticky offset. */
+.has-panel-sticky .chapter-panel.chapter-panel--work {
+  position: relative;
+  top: auto;
+}
+.chapter-panel--range {
+  margin-top: 0;
+}
+.section-anchor--range {
+  top: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .intro-sequence [data-hero] { position: relative; }
 }

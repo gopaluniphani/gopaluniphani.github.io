@@ -21,7 +21,7 @@ export default function Home() {
           <StoryTimeline />
           <span className="section-anchor section-anchor--panel" data-section-anchor="work" aria-hidden="true" />
           <div className="chapter-panel chapter-panel--work"><CaseStudies /></div>
-          <span className="section-anchor section-anchor--panel" data-section-anchor="range" aria-hidden="true" />
+          <span className="section-anchor section-anchor--panel section-anchor--range" data-section-anchor="range" aria-hidden="true" />
           <div className="chapter-panel chapter-panel--range"><CapabilityGroups /></div>
           <span className="section-anchor section-anchor--panel" data-section-anchor="lab" aria-hidden="true" />
           <div className="chapter-panel chapter-panel--lab"><ProjectLab /></div>

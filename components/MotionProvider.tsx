@@ -9,7 +9,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     if (!scrollWrapper || !sequence) return;
 
     const panels = Array.from(
-      sequence.querySelectorAll<HTMLElement>(".story, .chapter-panel:not(.chapter-panel--contact)"),
+      sequence.querySelectorAll<HTMLElement>(".story, .chapter-panel:not(.chapter-panel--contact):not(.chapter-panel--work)"),
     );
     const updateOffsets = () => {
       panels.forEach((panel) => {
