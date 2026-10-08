@@ -179,10 +179,11 @@ body {
 .chapter-panel--work { z-index: 3; }
 .story,
 .chapter-panel--range,
-.chapter-panel--contact { --paper: var(--section-alternate); }
+.chapter-panel--projects { --paper: var(--section-alternate); }
 .chapter-panel--range { z-index: 4; }
 .chapter-panel--lab { z-index: 5; }
-.chapter-panel--contact { z-index: 6; }
+.chapter-panel--projects { z-index: 6; }
+.chapter-panel--contact { z-index: 7; }
 
 .has-panel-sticky .story,
 .has-panel-sticky .chapter-panel:not(.chapter-panel--contact) {
@@ -1000,7 +1001,7 @@ ul {
     left: max(0.75rem, env(safe-area-inset-left));
     z-index: 80;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 0;
     padding: 0;
     border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
@@ -1241,3 +1242,5 @@ ul {
 .story .timeline__item { min-height: 0; padding-block: 1.5rem; }
 .story .timeline__marker { top: calc(1.5rem + var(--space-1)); }
 .story .timeline__main h3 { font-size: clamp(1.5rem, 2.5vw, 2.5rem); }
+
+@media (max-width: 380px) { .site-nav__label { font-size: 0.65rem; } }

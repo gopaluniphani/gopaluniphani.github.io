@@ -7,6 +7,7 @@ import {
   ChatCircle,
   Flask,
   Shapes,
+  SquaresFour,
   type Icon,
 } from "@phosphor-icons/react";
 import { profile } from "@/content/portfolio";
@@ -18,6 +19,7 @@ const links: Array<{ label: string; href: string; icon: Icon }> = [
   { label: "Work", href: "#work", icon: Briefcase },
   { label: "Range", href: "#range", icon: Shapes },
   { label: "Lab", href: "#lab", icon: Flask },
+  { label: "Projects", href: "#projects", icon: SquaresFour },
   { label: "Contact", href: "#contact", icon: ChatCircle },
 ];
 

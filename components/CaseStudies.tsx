@@ -6,85 +6,19 @@ import { ArrowUp, Plus } from "@phosphor-icons/react";
 import { caseStudies } from "@/content/portfolio";
 import styles from "./CaseStudies.module.css";
 
-const slideDuration = 450;
+import { AnimatedDisclosure, disclosureDuration as slideDuration } from "./AnimatedDisclosure";
 
 function CaseStudy({ study, active, onSelect }: {
   study: (typeof caseStudies)[number];
   active: boolean;
   onSelect: (number: string | null) => void;
 }) {
-  const disclosure = useRef<HTMLDetailsElement>(null);
-
-  const animation = useRef<Animation | null>(null);
-  const returnFocus = useRef(false);
-
-  useEffect(() => () => animation.current?.cancel(), []);
-
-  const setExpanded = useCallback((next: boolean, focusTitle = false) => {
-    const element = disclosure.current;
-    const summary = element?.querySelector("summary");
-    const content = element?.querySelector<HTMLElement>("[data-case-content]");
-    if (!element || !summary || !content) return;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Read the visible height before cancelling so rapid taps reverse smoothly.
-    const startHeight = element.getBoundingClientRect().height;
-    animation.current?.cancel();
-    animation.current = null;
-    if (!next && !element.open) return;
-    element.open = true;
-    element.toggleAttribute("data-closing", !next);
-    summary.setAttribute("aria-expanded", String(next));
-    content.inert = !next;
-
-    if (focusTitle) {
-      summary.focus({ preventScroll: true });
-      summary.scrollIntoView({ block: "nearest", behavior: reducedMotion ? "instant" : "smooth" });
-    }
-
-    const border = parseFloat(getComputedStyle(element).borderBottomWidth) || 0;
-    const endHeight = summary.getBoundingClientRect().height + border
-      + (next ? content.getBoundingClientRect().height : 0);
-
-    function finish() {
-      element!.open = next;
-      element!.removeAttribute("data-closing");
-      element!.style.removeProperty("height");
-      element!.style.removeProperty("overflow");
-      animation.current?.cancel();
-      animation.current = null;
-    }
-
-    if (reducedMotion) {
-      finish();
-      return;
-    }
-
-    element.style.overflow = "clip";
-    animation.current = element.animate(
-      { height: [`${startHeight}px`, `${endHeight}px`] },
-      { duration: slideDuration, easing: "cubic-bezier(0.4, 0, 0.2, 1)", fill: "both" },
-    );
-    animation.current.onfinish = finish;
-  }, []);
-
-  useEffect(() => {
-    setExpanded(active, returnFocus.current);
-    returnFocus.current = false;
-  }, [active, setExpanded]);
-
-  function closeStudy() {
-    returnFocus.current = true;
-    onSelect(null);
-  }
 
   return (
     <li>
-      <details className={styles.study} ref={disclosure}>
-        <summary className={styles.summary} onClick={(event) => {
-          event.preventDefault();
-          onSelect(active ? null : study.number);
-        }}>
+      <AnimatedDisclosure className={styles.study} summaryClassName={styles.summary} contentClassName={styles.detail}
+        active={active} onExpandedChange={(next) => onSelect(next ? study.number : null)}
+        labelledBy={`study-title-${study.number}`} summary={<>
           <span className={styles.number} aria-hidden="true">{study.number}</span>
           <span className={styles.summaryCopy}>
             <span className={styles.theme}>{study.theme}</span>
@@ -93,8 +27,8 @@ function CaseStudy({ study, active, onSelect }: {
           <span className={styles.toggle} aria-hidden="true">
             <Plus size={22} weight="regular" />
           </span>
-        </summary>
-        <div className={styles.detail} data-case-content role="region" aria-labelledby={`study-title-${study.number}`}>
+        </>}>
+        <>
           <div className={styles.detailGrid}>
             <div><h4>The problem</h4><p>{study.context}</p></div>
             <div><h4>My contribution</h4><p>{study.role}</p></div>
@@ -104,11 +38,11 @@ function CaseStudy({ study, active, onSelect }: {
           <ul className={styles.tags} aria-label="Skills used">
             {study.capabilities.map((capability) => <li key={capability}>{capability}</li>)}
           </ul>
-          <button className={styles.close} type="button" onClick={closeStudy}>
+          <button className={styles.close} type="button" data-disclosure-close>
             Close case study <ArrowUp size={16} aria-hidden="true" />
           </button>
-        </div>
-      </details>
+        </>
+      </AnimatedDisclosure>
     </li>
   );
 }

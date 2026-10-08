@@ -1,0 +1,10 @@
+.projects { font-family:var(--font-hero-sans),Arial,sans-serif; padding-bottom:clamp(5rem,8vw,7rem); }
+.header { padding-bottom:2rem; }
+.intro { display:grid; grid-template-columns:1.2fr .8fr; align-items:end; gap:2rem; margin-top:1.5rem; }
+.intro h2 { font-size:clamp(2.65rem,5.4vw,5rem); line-height:1.04; letter-spacing:-.055em; font-weight:560; }
+.intro h2 em { color:var(--accent); font-family:var(--font-hero-serif),Georgia,serif; font-weight:400; letter-spacing:-.035em; }
+.intro p { max-width:32rem; color:var(--ink-soft); font-size:1rem; line-height:1.7; }
+.cards { display:grid; gap:1.5rem; }
+.cards > article { margin-top:0; }
+@media(max-width:48rem) { .intro { grid-template-columns:1fr; gap:1rem; } }
+@media(max-width:36rem) { .intro h2 { font-size:clamp(2.25rem,9vw,3.1rem); } }

@@ -5,7 +5,7 @@ import styles from "./Contact.module.css";
 export function Contact() {
   return (
     <footer className={`shell ${styles.contact}`} id="contact" aria-labelledby="contact-title">
-      <p className="eyebrow">05 / What’s next</p>
+      <p className="eyebrow">06 / What’s next</p>
       <div className={styles.layout} data-reveal>
         <div className={styles.copy}>
           <h2 id="contact-title">Let’s build<br /><em>what’s next.</em></h2>

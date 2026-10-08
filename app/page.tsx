@@ -4,6 +4,7 @@ import { Contact } from "@/components/Contact";
 import { Hero } from "@/components/Hero";
 import { MotionProvider } from "@/components/MotionProvider";
 import { Navigation } from "@/components/Navigation";
+import { PersonalProjects } from "@/components/PersonalProjects";
 import { ProjectLab } from "@/components/ProjectLab";
 import { ScrollBody } from "@/components/ScrollBody";
 import { StoryTimeline } from "@/components/StoryTimeline";
@@ -25,6 +26,8 @@ export default function Home() {
           <div className="chapter-panel chapter-panel--range"><CapabilityGroups /></div>
           <span className="section-anchor section-anchor--panel" data-section-anchor="lab" aria-hidden="true" />
           <div className="chapter-panel chapter-panel--lab"><ProjectLab /></div>
+          <span className="section-anchor section-anchor--panel" data-section-anchor="projects" aria-hidden="true" />
+          <div className="chapter-panel chapter-panel--projects"><PersonalProjects /></div>
           <span className="section-anchor section-anchor--panel" data-section-anchor="contact" aria-hidden="true" />
           <div className="chapter-panel chapter-panel--contact"><Contact /></div>
         </main>
