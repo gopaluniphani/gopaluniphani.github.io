@@ -31,7 +31,7 @@ export default function TempoForgePage() {
             <h1 id="project-title">Built out of<br /><em>curiosity.</em><br />Shaped by engineering.</h1>
             <p className={styles.heroLead}>A personal workout app. A hands-on exploration of native development, connected devices, and building with AI.</p>
             <p className={styles.heroNote}>My professional focus is enterprise software. Tempo Forge is where I stretch into a new platform, bringing the same care for system design, review, and delivery to a hobby project.</p>
-            <a className={styles.primaryLink} href="#engineering">Inside the engineering <span aria-hidden="true">↓</span></a>
+            <div className={styles.heroActions}><a className={styles.primaryLink} href="https://apps.apple.com/us/app/tempo-forge-timer/id6761012215">View on the App Store <span aria-hidden="true">↗</span></a><a className={styles.secondaryLink} href="#engineering">Inside the engineering <span aria-hidden="true">↓</span></a></div>
           </div>
           <div className={styles.heroVisual}><TempoForgeDevices priority showOrbit={false} /><p className={styles.visualCaption}>TempoForge on iPhone & Apple Watch<br /><span>Actual app captures · Version 2.0</span></p></div>
         </section>
